@@ -1,0 +1,8 @@
+[functions.send-email]
+verify_jwt = true
+
+[functions.razorpay-create-order]
+verify_jwt = true
+
+[functions.razorpay-verify-payment]
+verify_jwt = true

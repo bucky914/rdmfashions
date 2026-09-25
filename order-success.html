@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order Confirmed | RDM Fashions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">RDM <span>Fashions</span></a>
+  <div class="header-actions">
+    <a href="history.html">History</a>
+    <a class="cart-link" href="cart.html">Cart <span class="cart-count">0</span></a>
+  </div>
+</header>
+<main class="section">
+  <section class="success-card">
+    <div class="success-mark">✓</div>
+    <p class="eyebrow">Order Confirmed!</p>
+    <h1>Thank you for your order.</h1>
+    <p>Your order has been received successfully.</p>
+    <p class="order-id">Order ID: <strong id="order-id">—</strong></p>
+<p class="order-id">Payment: <strong id="payment-status">—</strong></p>
+<p class="order-id">Payment ID: <strong id="payment-id">—</strong></p>
+
+    <div class="invoice success-invoice">
+      <h2>Order summary</h2>
+      <div id="success-items"></div>
+      <div><span>Total quantity</span><span id="success-quantity">—</span></div>
+      <div><span>Subtotal</span><span id="success-subtotal">—</span></div>
+      <div><span>Delivery charge</span><span id="success-delivery">—</span></div>
+      <div class="total"><strong>Total</strong><strong id="success-total">—</strong></div>
+    </div>
+
+    <a class="button" href="index.html">Continue Shopping</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div>
+      <a class="brand" href="index.html">RDM <span>Fashions</span></a>
+      <p class="footer-copy">Quality microfiber cloths for everyday cleaning.</p>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <a href="tel:+918610189109" class="footer-contact-link">+91 8610189109</a>
+      <a href="https://wa.me/918610189109?text=Hi%20RDM%20Fashions%2C%20I%20would%20like%20to%20know%20more%20about%20the%20microfiber%20cloth." target="_blank" rel="noopener" class="button footer-whatsapp">Message on WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© <span class="year"></span> RDM Fashions</div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+const o = JSON.parse(sessionStorage.getItem("rdmLastOrder") || "null");
+if (o) {
+  document.querySelector("#order-id").textContent = o.id;
+  document.querySelector("#payment-status").textContent = o.payment_status === "paid" ? "Paid" : (o.payment_status || "—");
+  document.querySelector("#payment-id").textContent = o.razorpay_payment_id || "—";
+  document.querySelector("#success-quantity").textContent = o.quantity;
+
+  const items = Array.isArray(o.items) ? o.items : [];
+  document.querySelector("#success-items").innerHTML = items.map(item => `
+    <div>
+      <span>${item.color} × ${item.quantity}</span>
+      <span>${formatMoney(item.line_total)}</span>
+    </div>
+  `).join("");
+
+  document.querySelector("#success-subtotal").textContent = formatMoney(o.subtotal);
+  document.querySelector("#success-delivery").textContent = formatMoney(o.delivery);
+  document.querySelector("#success-total").textContent = formatMoney(o.total);
+}
+</script>
+</body>
+</html>

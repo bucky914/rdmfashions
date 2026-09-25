@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order History | RDM Fashions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">RDM <span>Fashions</span></a>
+  <a class="cart-link" href="cart.html">Cart <span class="cart-count">0</span></a>
+</header>
+
+<main class="section">
+  <div class="section-heading">
+    <p class="eyebrow">Your orders</p>
+    <h1>Order History</h1>
+    <p class="muted">Orders placed from this browser are shown here.</p>
+  </div>
+
+  <p id="history-message" class="form-message" aria-live="polite"></p>
+  <div id="history-list" class="history-list"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div>
+      <a class="brand" href="index.html">RDM <span>Fashions</span></a>
+      <p class="footer-copy">Quality microfiber cloths for everyday cleaning.</p>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <a href="tel:+918610189109" class="footer-contact-link">+91 8610189109</a>
+      <a href="https://wa.me/918610189109?text=Hi%20RDM%20Fashions%2C%20I%20would%20like%20to%20know%20more%20about%20the%20microfiber%20cloth." target="_blank" rel="noopener" class="button footer-whatsapp">Message on WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© <span class="year"></span> RDM Fashions</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/history.js"></script>
+</body>
+</html>
